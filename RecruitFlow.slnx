@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RecruitFlow.API/RecruitFlow.API.csproj" />
+  <Project Path="RecruitFlow.Application/RecruitFlow.Application.csproj" />
+  <Project Path="RecruitFlow.Domain/RecruitFlow.Domain.csproj" />
+  <Project Path="RecruitFlow.Infrastructure/RecruitFlow.Infrastructure.csproj" />
+</Solution>
