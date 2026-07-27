@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RecruitFlow.Application.Interfaces;
+using RecruitFlow.Application.Interfaces.Repositories;
 using RecruitFlow.Infrastructure.Data;
 
 

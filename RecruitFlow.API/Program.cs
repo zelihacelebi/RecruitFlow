@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RecruitFlow.Application.Interfaces;
+using RecruitFlow.Application.Interfaces.Repositories;
+using RecruitFlow.Application.Interfaces.Services;
+using RecruitFlow.Application.Services;
 using RecruitFlow.Infrastructure.Data;
 using RecruitFlow.Infrastructure.Repositories;
 
@@ -12,6 +14,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
 builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
+
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IJobPositionService, JobPositionService>();
+builder.Services.AddScoped<ICandidateService, CandidateService>();
 
 // Add services to the container.
 

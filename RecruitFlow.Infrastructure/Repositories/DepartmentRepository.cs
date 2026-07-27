@@ -1,4 +1,4 @@
-﻿using RecruitFlow.Application.Interfaces;
+﻿using RecruitFlow.Application.Interfaces.Repositories;
 using RecruitFlow.Domain.Entities;
 using RecruitFlow.Infrastructure.Data;
 using System;

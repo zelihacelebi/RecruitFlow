@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecruitFlow.Application.Interfaces
+namespace RecruitFlow.Application.Interfaces.Repositories
 {
-    public interface IDepartmentRepository : IRepository<Department>
+    public interface ICandidateRepository : IRepository<Candidate>
     {
     }
 }
