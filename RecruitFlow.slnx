@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RecruitFlow.API/RecruitFlow.API.csproj" />
+  <Project Path="RecruitFlow.Application/RecruitFlow.Application.csproj" Id="81f631ad-bf5b-46ad-8918-f14364642729" />
+  <Project Path="RecruitFlow.Domain/RecruitFlow.Domain.csproj" Id="3b9cc41a-71f1-4fec-b329-3af7c65541f4" />
+  <Project Path="RecruitFlow.Infrastructure/RecruitFlow.Infrastructure.csproj" Id="ad4a7222-7ddd-4309-a633-fd2b065d9d7a" />
+</Solution>
