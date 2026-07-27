@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using RecruitFlow.Application.Interfaces;
 using RecruitFlow.Infrastructure.Data;
+using RecruitFlow.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
+builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 
 // Add services to the container.
 
