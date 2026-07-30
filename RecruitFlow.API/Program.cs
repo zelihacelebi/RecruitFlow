@@ -4,6 +4,7 @@ using RecruitFlow.Application.Interfaces.Services;
 using RecruitFlow.Application.Services;
 using RecruitFlow.Infrastructure.Data;
 using RecruitFlow.Infrastructure.Repositories;
+using RecruitFlow.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IJobPositionService, JobPositionService>();
 builder.Services.AddScoped<ICandidateService, CandidateService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add services to the container.
 

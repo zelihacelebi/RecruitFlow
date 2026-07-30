@@ -1,26 +1,64 @@
-﻿using RecruitFlow.Application.Interfaces.Repositories;
+﻿using AutoMapper;
+using RecruitFlow.Application.DTOs;
+using RecruitFlow.Application.Interfaces.Repositories;
 using RecruitFlow.Application.Interfaces.Services;
 using RecruitFlow.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RecruitFlow.Application.Services
 {
     public class DepartmentService : IDepartmentService
     {
         private readonly IDepartmentRepository _departmentRepository;
+        private readonly IMapper _mapper;
 
-        public DepartmentService(IDepartmentRepository departmentRepository)
+        public DepartmentService(IDepartmentRepository departmentRepository, IMapper mapper)
         {
             _departmentRepository = departmentRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Department>> GetAllAsync()
+        public async Task<IEnumerable<DepartmentDto>> GetAllAsync()
         {
-            return await _departmentRepository.GetAllAsync();
+            var departments = await _departmentRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<DepartmentDto>>(departments);
+        }
+        public async Task<DepartmentDto?> GetByIdAsync(Guid id)
+        {
+            var department = await _departmentRepository.GetByIdAsync(id);
+
+            return _mapper.Map<DepartmentDto>(department);
+        }
+
+        public async Task<DepartmentDto> CreateAsync(CreateDepartmentDto dto)
+        {
+            var department = _mapper.Map<Department>(dto);
+
+            await _departmentRepository.AddAsync(department);
+
+            return _mapper.Map<DepartmentDto>(department);
+        }
+
+        public async Task UpdateAsync(Guid id, UpdateDepartmentDto dto)
+        {
+            var department = await _departmentRepository.GetByIdAsync(id);
+
+            if (department == null)
+                throw new KeyNotFoundException("Department not found");
+
+            _mapper.Map(dto, department);
+
+            _departmentRepository.Update(department);
+        }
+        public async Task DeleteAsync(Guid id)
+        {
+            var department = await _departmentRepository.GetByIdAsync(id);
+
+            if (department == null)
+                throw new KeyNotFoundException("Department not found");
+
+            _departmentRepository.Delete(department);
         }
     }
 }
