@@ -6,28 +6,23 @@ using System.Threading.Tasks;
 
 namespace RecruitFlow.Application.DTOs
 {
-    public class JobPositionDto
+    public class JobPositionDtoBase
+    {
+        public string Title { get; set; } = string.Empty;
+
+        public Guid DepartmentId { get; set; }
+    }
+    public class JobPositionDto : JobPositionDtoBase
     {
         public Guid Id { get; set; }
-
-        public string Title { get; set; } = string.Empty;
-
-        public Guid DepartmentId { get; set; }
     }
 
-
-    public class CreateJobPositionDto   
+    public class CreateJobPositionDto : JobPositionDtoBase
     {
-        public string Title { get; set; } = string.Empty;
-
-        public Guid DepartmentId { get; set; }
     }
 
-
-    public class UpdateJobPositionDto
+    public class UpdateJobPositionDto : JobPositionDtoBase
     {
-        public string Title { get; set; } = string.Empty;
-
-        public Guid DepartmentId { get; set; }
+        public Guid Id { get; set; }
     }
 }

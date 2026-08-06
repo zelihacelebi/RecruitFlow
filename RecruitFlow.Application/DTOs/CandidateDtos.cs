@@ -1,44 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace RecruitFlow.Application.DTOs
 {
-    public class CandidateDto
+    public abstract class CandidateDtoBase
+    {
+        public string FirstName { get; set; } = string.Empty;
+
+        public string LastName { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+    }
+
+    public class CandidateDto : CandidateDtoBase
     {
         public Guid Id { get; set; }
 
-        public string FirstName { get; set; } = string.Empty;
-
-        public string LastName { get; set; } = string.Empty;
-
-        public string Email { get; set; } = string.Empty;
-
         public Guid JobPositionId { get; set; }
     }
 
 
-    public class CreateCandidateDto
+    public class CreateCandidateDto : CandidateDtoBase
     {
-        public string FirstName { get; set; } = string.Empty;
-
-        public string LastName { get; set; } = string.Empty;
-
-        public string Email { get; set; } = string.Empty;
-
         public Guid JobPositionId { get; set; }
     }
 
 
-    public class UpdateCandidateDto
+    public class UpdateCandidateDto : CandidateDtoBase
     {
-        public string FirstName { get; set; } = string.Empty;
-
-        public string LastName { get; set; } = string.Empty;
-
-        public string Email { get; set; } = string.Empty;
+        public Guid Id { get; set; }
 
         public Guid JobPositionId { get; set; }
     }
