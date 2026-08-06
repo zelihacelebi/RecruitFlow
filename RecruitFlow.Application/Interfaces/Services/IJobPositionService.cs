@@ -10,7 +10,7 @@ namespace RecruitFlow.Application.Interfaces.Services
 
         Task<JobPositionDto> CreateAsync(CreateJobPositionDto dto);
 
-        Task UpdateAsync(Guid id, UpdateJobPositionDto dto);
+        Task<JobPositionDto> UpdateAsync(Guid id, UpdateJobPositionDto dto);
 
         Task DeleteAsync(Guid id);
     }

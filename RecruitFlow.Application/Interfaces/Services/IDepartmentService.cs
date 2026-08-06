@@ -10,7 +10,7 @@ namespace RecruitFlow.Application.Interfaces.Services
 
         Task<DepartmentDto> CreateAsync(CreateDepartmentDto dto);
 
-        Task UpdateAsync(Guid id, UpdateDepartmentDto dto);
+        Task<DepartmentDto> UpdateAsync(Guid id, UpdateDepartmentDto dto);
 
         Task DeleteAsync(Guid id);
     }

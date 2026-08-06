@@ -40,7 +40,7 @@ namespace RecruitFlow.Application.Services
             return _mapper.Map<JobPositionDto>(jobPosition);
         }
 
-        public async Task UpdateAsync(Guid id, UpdateJobPositionDto dto)
+        public async Task<JobPositionDto> UpdateAsync(Guid id, UpdateJobPositionDto dto)
         {
             var jobPosition = await _jobPositionRepository.GetByIdAsync(id);
 
@@ -49,7 +49,9 @@ namespace RecruitFlow.Application.Services
 
             _mapper.Map(dto, jobPosition);
 
-            _jobPositionRepository.Update(jobPosition);
+            await _jobPositionRepository.UpdateAsync(jobPosition);
+
+            return _mapper.Map<JobPositionDto>(jobPosition);
         }
         public async Task DeleteAsync(Guid id)
         {
@@ -58,7 +60,7 @@ namespace RecruitFlow.Application.Services
             if (jobPosition == null)
                 throw new KeyNotFoundException("Job position not found");
 
-            _jobPositionRepository.Delete(jobPosition);
+            await _jobPositionRepository.DeleteAsync(jobPosition);
         }
     }
 }

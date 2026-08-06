@@ -40,7 +40,7 @@ namespace RecruitFlow.Application.Services
             return _mapper.Map<DepartmentDto>(department);
         }
 
-        public async Task UpdateAsync(Guid id, UpdateDepartmentDto dto)
+        public async Task<DepartmentDto> UpdateAsync(Guid id, UpdateDepartmentDto dto)
         {
             var department = await _departmentRepository.GetByIdAsync(id);
 
@@ -49,7 +49,9 @@ namespace RecruitFlow.Application.Services
 
             _mapper.Map(dto, department);
 
-            _departmentRepository.Update(department);
+            await _departmentRepository.UpdateAsync(department);
+
+            return _mapper.Map<DepartmentDto>(department);
         }
         public async Task DeleteAsync(Guid id)
         {
@@ -58,7 +60,7 @@ namespace RecruitFlow.Application.Services
             if (department == null)
                 throw new KeyNotFoundException("Department not found");
 
-            _departmentRepository.Delete(department);
+            await _departmentRepository.DeleteAsync(department);
         }
     }
 }
