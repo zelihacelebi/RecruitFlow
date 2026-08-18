@@ -1,3 +1,4 @@
+using RecruitFlow.API.Filters;
 using RecruitFlow.Application;
 using RecruitFlow.Infrastructure;
 
@@ -13,6 +14,8 @@ builder.Services.AddApplication();
 // Infrastructure Layer
 builder.Services.AddInfrastructure(
     builder.Configuration);
+
+builder.Services.AddScoped(typeof(ValidationFilter<>));
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();

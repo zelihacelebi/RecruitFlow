@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RecruitFlow.API.Filters;
 using RecruitFlow.Application.DTOs;
 using RecruitFlow.Application.Interfaces.Services;
 
@@ -35,6 +36,7 @@ namespace RecruitFlow.API.Controllers
 
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilter<CreateCandidateDto>))]
         public async Task<IActionResult> Create(CreateCandidateDto dto)
         {
             var createdCandidate = await _candidateService.CreateAsync(dto);
@@ -44,8 +46,10 @@ namespace RecruitFlow.API.Controllers
 
 
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilter<UpdateCandidateDto>))]
         public async Task<IActionResult> Update(Guid id, UpdateCandidateDto dto)
         {
+            dto.Id = id;
             var updatedCandidate = await _candidateService.UpdateAsync(id, dto);
 
             return Ok(updatedCandidate);
