@@ -1,3 +1,4 @@
+using RecruitFlow.API.ExceptionHandling;
 using RecruitFlow.API.Filters;
 using RecruitFlow.Application;
 using RecruitFlow.Infrastructure;
@@ -15,13 +16,20 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(
     builder.Configuration);
 
+// API Filters
 builder.Services.AddScoped(typeof(ValidationFilter<>));
+
+// Exception Handling
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
