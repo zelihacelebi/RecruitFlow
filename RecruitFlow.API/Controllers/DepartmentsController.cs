@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecruitFlow.API.Filters;
 using RecruitFlow.Application.DTOs;
+using RecruitFlow.Application.DTOs.Common;
 using RecruitFlow.Application.Interfaces.Services;
 using RecruitFlow.Application.Services;
 
@@ -18,9 +19,10 @@ namespace RecruitFlow.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [ServiceFilter(typeof(ValidationFilter<PaginationRequest>))]
+        public async Task<IActionResult> GetAll([FromQuery] PaginationRequest paginationRequest)
         {
-            var departments = await _departmentService.GetAllAsync();
+            var departments = await _departmentService.GetAllAsync(paginationRequest);
 
             return Ok(departments);
         }

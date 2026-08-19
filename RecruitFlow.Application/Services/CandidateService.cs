@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RecruitFlow.Application.DTOs;
+using RecruitFlow.Application.DTOs.Common;
 using RecruitFlow.Application.Interfaces.Repositories;
 using RecruitFlow.Application.Interfaces.Services;
 using RecruitFlow.Domain.Entities;
@@ -18,9 +19,9 @@ namespace RecruitFlow.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CandidateDto>> GetAllAsync()
+        public async Task<IEnumerable<CandidateDto>> GetAllAsync(PaginationRequest paginationRequest)
         {
-            var candidates = await _candidateRepository.GetAllAsync();
+            var candidates = await _candidateRepository.GetAllAsync(paginationRequest);
 
             return _mapper.Map<IEnumerable<CandidateDto>>(candidates);
         }

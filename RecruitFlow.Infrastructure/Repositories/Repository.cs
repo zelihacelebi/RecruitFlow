@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RecruitFlow.Application.DTOs.Common;
 using RecruitFlow.Application.Interfaces.Repositories;
 using RecruitFlow.Infrastructure.Data;
 
@@ -16,9 +17,12 @@ namespace RecruitFlow.Infrastructure.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync(PaginationRequest paginationRequest)
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet
+                 .Skip((paginationRequest.Page - 1) * paginationRequest.PageSize)
+                 .Take(paginationRequest.PageSize)
+                 .ToListAsync();
         }
 
         public async Task<T?> GetByIdAsync(Guid id)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecruitFlow.Application.DTOs.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace RecruitFlow.Application.Interfaces.Repositories
 
         Task<T?> GetByIdAsync(Guid id);
 
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(PaginationRequest paginationRequest);
 
         Task AddAsync(T entity);
 
