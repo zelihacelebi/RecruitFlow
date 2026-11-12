@@ -19,10 +19,10 @@ namespace RecruitFlow.API.Controllers
         }
 
         [HttpGet]
-        [ServiceFilter(typeof(ValidationFilter<PaginationRequest>))]
-        public async Task<IActionResult> GetAll([FromQuery] PaginationRequest paginationRequest)
+        [ServiceFilter(typeof(ValidationFilter<QueryRequest>))]
+        public async Task<IActionResult> GetAll([FromQuery] QueryRequest queryRequest)
         {
-            var jobPositions = await _jobPositionService.GetAllAsync(paginationRequest);
+            var jobPositions = await _jobPositionService.GetAllAsync(queryRequest);
 
             return Ok(jobPositions);
         }

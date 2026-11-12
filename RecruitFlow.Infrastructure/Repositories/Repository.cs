@@ -17,11 +17,11 @@ namespace RecruitFlow.Infrastructure.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(PaginationRequest paginationRequest)
+        public async Task<IEnumerable<T>> GetAllAsync(QueryRequest queryRequest)
         {
             return await _dbSet
-                 .Skip((paginationRequest.Page - 1) * paginationRequest.PageSize)
-                 .Take(paginationRequest.PageSize)
+                 .Skip((queryRequest.Page - 1) * queryRequest.PageSize)
+                 .Take(queryRequest.PageSize)
                  .ToListAsync();
         }
 

@@ -1,4 +1,5 @@
-﻿using RecruitFlow.Domain.Entities;
+﻿using RecruitFlow.Application.DTOs.Common;
+using RecruitFlow.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,7 @@ namespace RecruitFlow.Application.Interfaces.Repositories
 {
     public interface ICandidateRepository : IRepository<Candidate>
     {
+        Task<IEnumerable<Candidate>> GetByQueryAsync(
+        QueryRequest queryRequest);
     }
 }

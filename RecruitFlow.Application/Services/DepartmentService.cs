@@ -19,9 +19,9 @@ namespace RecruitFlow.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<DepartmentDto>> GetAllAsync(PaginationRequest paginationRequest)
+        public async Task<IEnumerable<DepartmentDto>> GetAllAsync(QueryRequest queryRequest)
         {
-            var departments = await _departmentRepository.GetAllAsync(paginationRequest);
+            var departments = await _departmentRepository.GetAllAsync(queryRequest);
 
             return _mapper.Map<IEnumerable<DepartmentDto>>(departments);
         }

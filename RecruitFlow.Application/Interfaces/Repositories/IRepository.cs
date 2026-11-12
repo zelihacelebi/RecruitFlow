@@ -12,7 +12,7 @@ namespace RecruitFlow.Application.Interfaces.Repositories
 
         Task<T?> GetByIdAsync(Guid id);
 
-        Task<IEnumerable<T>> GetAllAsync(PaginationRequest paginationRequest);
+        Task<IEnumerable<T>> GetAllAsync(QueryRequest queryRequest);
 
         Task AddAsync(T entity);
 

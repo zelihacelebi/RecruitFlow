@@ -6,7 +6,7 @@ namespace RecruitFlow.Application.Interfaces.Services
 {
     public interface ICandidateService
     {
-        Task<IEnumerable<CandidateDto>> GetAllAsync(PaginationRequest paginationRequest);
+        Task<IEnumerable<CandidateDto>> GetAllAsync(QueryRequest queryRequest);
         Task<CandidateDto?> GetByIdAsync(Guid id);
 
         Task<CandidateDto> CreateAsync(CreateCandidateDto dto);

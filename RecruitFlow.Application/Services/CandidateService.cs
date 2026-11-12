@@ -19,9 +19,9 @@ namespace RecruitFlow.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CandidateDto>> GetAllAsync(PaginationRequest paginationRequest)
+        public async Task<IEnumerable<CandidateDto>> GetAllAsync(QueryRequest queryRequest)
         {
-            var candidates = await _candidateRepository.GetAllAsync(paginationRequest);
+            var candidates = await _candidateRepository.GetByQueryAsync(queryRequest);
 
             return _mapper.Map<IEnumerable<CandidateDto>>(candidates);
         }
